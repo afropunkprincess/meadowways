@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Michigan Clean Energy Power Map</title>
+<title>Michigan Energy Ecosystem Map</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,11 +15,11 @@
     --text3: #888780;
     --border: rgba(0,0,0,0.12);
     --border2: rgba(0,0,0,0.22);
-    --teal-bg: #E1F5EE; --teal-text: #085041; --teal-fill: #0F6E56; --teal-light: #9FE1CB;
-    --blue-bg: #E6F1FB; --blue-text: #0C447C; --blue-fill: #185FA5; --blue-light: #B5D4F4;
-    --coral-bg: #FAECE7; --coral-text: #712B13; --coral-fill: #993C1D; --coral-light: #F5C4B3;
-    --amber-bg: #FAEEDA; --amber-text: #633806; --amber-fill: #854F0B; --amber-light: #FAC775;
-    --gray-bg: #F1EFE8; --gray-text: #3d3d3a; --gray-fill: #5F5E5A; --gray-light: #D3D1C7;
+    --teal-bg: #E1F5EE; --teal-text: #085041; --teal-fill: #0F6E56;
+    --blue-bg: #E6F1FB; --blue-text: #0C447C; --blue-fill: #185FA5;
+    --coral-bg: #FAECE7; --coral-text: #712B13; --coral-fill: #993C1D;
+    --amber-bg: #FAEEDA; --amber-text: #633806; --amber-fill: #854F0B;
+    --gray-bg: #F1EFE8; --gray-text: #3d3d3a; --gray-fill: #5F5E5A;
     --radius: 8px; --radius-lg: 12px;
   }
 
@@ -27,11 +27,11 @@
     :root {
       --bg: #1e1e1c; --bg2: #2a2a27; --text: #e8e6df; --text2: #a8a69e; --text3: #6e6d68;
       --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.2);
-      --teal-bg: #04342C; --teal-text: #9FE1CB; --teal-fill: #1D9E75; --teal-light: #0F6E56;
-      --blue-bg: #042C53; --blue-text: #B5D4F4; --blue-fill: #378ADD; --blue-light: #185FA5;
-      --coral-bg: #4A1B0C; --coral-text: #F5C4B3; --coral-fill: #D85A30; --coral-light: #993C1D;
-      --amber-bg: #412402; --amber-text: #FAC775; --amber-fill: #BA7517; --amber-light: #854F0B;
-      --gray-bg: #2C2C2A; --gray-text: #D3D1C7; --gray-fill: #888780; --gray-light: #444441;
+      --teal-bg: #04342C; --teal-text: #9FE1CB; --teal-fill: #1D9E75;
+      --blue-bg: #042C53; --blue-text: #B5D4F4; --blue-fill: #378ADD;
+      --coral-bg: #4A1B0C; --coral-text: #F5C4B3; --coral-fill: #D85A30;
+      --amber-bg: #412402; --amber-text: #FAC775; --amber-fill: #BA7517;
+      --gray-bg: #2C2C2A; --gray-text: #D3D1C7; --gray-fill: #888780;
     }
   }
 
@@ -43,14 +43,11 @@
     padding: 24px 16px 48px;
   }
 
-  .page {
-    max-width: 760px;
-    margin: 0 auto;
-  }
+  .page { max-width: 780px; margin: 0 auto; }
 
   header { margin-bottom: 20px; }
   header h1 { font-size: 20px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-  header p { font-size: 13px; color: var(--text2); line-height: 1.6; max-width: 580px; }
+  header p { font-size: 13px; color: var(--text2); line-height: 1.6; max-width: 600px; }
 
   .map-wrap {
     background: var(--bg);
@@ -63,21 +60,21 @@
   svg#pmap { width: 100%; display: block; }
 
   .tier-label { font-size: 11px; fill: var(--text3); font-family: inherit; }
-  .node-th { font-size: 14px; font-weight: 500; font-family: inherit; }
-  .node-ts { font-size: 12px; font-family: inherit; }
+  .node-th { font-size: 13px; font-weight: 500; font-family: inherit; }
+  .node-ts { font-size: 11px; font-family: inherit; }
   .node-ring { cursor: pointer; }
   .node-ring:hover rect { opacity: 0.82; }
 
-  .node-teal rect  { fill: var(--teal-bg);  stroke: var(--teal-fill);  }
+  .node-teal rect  { fill: var(--teal-bg);  stroke: var(--teal-fill);  stroke-width: 0.5; }
   .node-teal .node-th  { fill: var(--teal-text);  }
   .node-teal .node-ts  { fill: var(--teal-fill);  }
-  .node-blue rect  { fill: var(--blue-bg);  stroke: var(--blue-fill);  }
+  .node-blue rect  { fill: var(--blue-bg);  stroke: var(--blue-fill);  stroke-width: 0.5; }
   .node-blue .node-th  { fill: var(--blue-text);  }
   .node-blue .node-ts  { fill: var(--blue-fill);  }
-  .node-coral rect { fill: var(--coral-bg); stroke: var(--coral-fill); }
+  .node-coral rect { fill: var(--coral-bg); stroke: var(--coral-fill); stroke-width: 0.5; }
   .node-coral .node-th { fill: var(--coral-text); }
   .node-coral .node-ts { fill: var(--coral-fill); }
-  .node-amber rect { fill: var(--amber-bg); stroke: var(--amber-fill); }
+  .node-amber rect { fill: var(--amber-bg); stroke: var(--amber-fill); stroke-width: 0.5; }
   .node-amber .node-th { fill: var(--amber-text); }
   .node-amber .node-ts { fill: var(--amber-fill); }
   .node-gray rect  { fill: var(--gray-bg);  stroke: var(--gray-fill);  stroke-width: 1; }
@@ -86,8 +83,6 @@
 
   .legend-text { font-size: 11px; fill: var(--text3); font-family: inherit; }
   .divider { stroke: var(--border); stroke-width: 0.5; }
-  .arr-solid { stroke-opacity: 0.4; }
-  .arr-dash { stroke-opacity: 0.45; stroke-dasharray: 5,3; }
 
   .detail-card {
     background: var(--bg);
@@ -127,12 +122,13 @@
 <div class="page">
 
   <header>
-    <h1>Michigan clean energy power map</h1>
-    <p>Who controls Michigan's energy future — and how you, as a voter and ratepayer, can influence them. Click any box to learn more.</p>
+    <h1>Michigan energy ecosystem map</h1>
+    <p>Who shapes Michigan's energy future — and how you, as a voter and ratepayer, can influence them. Click any box to learn more.</p>
   </header>
 
   <div class="map-wrap">
-    <svg id="pmap" viewBox="0 0 680 490" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Michigan clean energy stakeholder map showing accountability pathways from residents up to utilities, regulators, and legislators">
+    <svg id="pmap" viewBox="0 0 680 510" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Michigan energy ecosystem map showing accountability pathways from residents up to utilities, regulators, and state leaders">
 
       <defs>
         <marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
@@ -141,80 +137,119 @@
       </defs>
 
       <!-- Tier labels -->
-      <text class="tier-label" x="36" y="68" text-anchor="middle" dominant-baseline="central">State</text>
-      <text class="tier-label" x="36" y="82" text-anchor="middle" dominant-baseline="central">lawmakers</text>
-      <text class="tier-label" x="36" y="195" text-anchor="middle" dominant-baseline="central">Regulator</text>
-      <text class="tier-label" x="36" y="315" text-anchor="middle" dominant-baseline="central">Utilities</text>
-      <text class="tier-label" x="36" y="425" text-anchor="middle" dominant-baseline="central">You</text>
+      <text class="tier-label" x="30" y="67"  text-anchor="middle" dominant-baseline="central">State</text>
+      <text class="tier-label" x="30" y="80"  text-anchor="middle" dominant-baseline="central">leaders</text>
+      <text class="tier-label" x="30" y="195" text-anchor="middle" dominant-baseline="central">Regulator</text>
+      <text class="tier-label" x="30" y="315" text-anchor="middle" dominant-baseline="central">Utilities</text>
+      <text class="tier-label" x="30" y="425" text-anchor="middle" dominant-baseline="central">Residents</text>
 
       <!-- Tier dividers -->
-      <line class="divider" x1="68" y1="140" x2="640" y2="140"/>
-      <line class="divider" x1="68" y1="260" x2="640" y2="260"/>
-      <line class="divider" x1="68" y1="380" x2="640" y2="380"/>
+      <line class="divider" x1="55" y1="140" x2="640" y2="140"/>
+      <line class="divider" x1="55" y1="260" x2="640" y2="260"/>
+      <line class="divider" x1="55" y1="380" x2="640" y2="380"/>
 
-      <!-- Arrows: regulated accountability -->
-      <path class="arr-solid" d="M 255 258 L 255 215 L 320 215 L 320 208" fill="none" stroke="var(--blue-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
-      <path class="arr-solid" d="M 430 258 L 430 215 L 320 215 L 320 208" fill="none" stroke="var(--blue-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
-      <path class="arr-solid" d="M 240 170 L 180 145 L 180 108" fill="none" stroke="var(--teal-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
-      <path class="arr-solid" d="M 400 170 L 470 145 L 470 108" fill="none" stroke="var(--teal-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
-      <!-- Arrows: voter influence (dashed) -->
-      <path class="arr-dash" d="M 255 378 L 255 342" fill="none" stroke="var(--gray-fill)" stroke-width="1.2" marker-end="url(#arw)"/>
-      <path class="arr-dash" d="M 430 378 L 430 342" fill="none" stroke="var(--gray-fill)" stroke-width="1.2" marker-end="url(#arw)"/>
-      <path class="arr-dash" d="M 590 388 L 590 322 L 550 322" fill="none" stroke="var(--amber-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
-      <path class="arr-dash" d="M 490 298 L 430 228 L 400 200" fill="none" stroke="var(--amber-fill)" stroke-width="1.2" marker-end="url(#arw)"/>
-      <path class="arr-dash" d="M 340 378 L 340 210" fill="none" stroke="var(--teal-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
-      <path class="arr-dash" d="M 200 393 L 130 340 L 130 108" fill="none" stroke="var(--coral-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
-      <path class="arr-dash" d="M 380 393 L 570 340 L 570 108" fill="none" stroke="var(--coral-fill)" stroke-width="1.5" marker-end="url(#arw)"/>
+      <!-- ARROWS — 10 total, dedicated channels, no overlaps -->
 
-      <!-- ROW 1: Legislators -->
+      <!-- ── 1. Ratepayers → DTE  x=154, straight vertical ── -->
+      <path d="M 154 390 L 154 332" fill="none" stroke="var(--gray-fill)" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arw)"/>
+
+      <!-- ── 2. DTE → MPSC  x=154, straight vertical ── -->
+      <path d="M 154 270 L 154 224" fill="none" stroke="var(--blue-fill)" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arw)"/>
+
+      <!-- ── 3. Ratepayers → Consumers  x=355, straight vertical ── -->
+      <path d="M 355 390 L 355 332" fill="none" stroke="var(--gray-fill)" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arw)"/>
+
+      <!-- ── 4. Consumers → MPSC  x=355, straight vertical ── -->
+      <path d="M 355 270 L 355 224" fill="none" stroke="var(--blue-fill)" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arw)"/>
+
+      <!-- ── 5. MPSC → Governor  x=340, straight vertical ── -->
+      <path d="M 340 162 L 340 108" fill="none" stroke="var(--teal-fill)" stroke-width="1.5" stroke-opacity="0.55" marker-end="url(#arw)"/>
+
+      <!-- ── 6. Ratepayers → House  x=75, straight up then diagonal into House bottom center ── -->
+      <!-- x=75 clear of all nodes. Diagonal elbow at y=140 (below tier divider) angles to House cx (154,108) -->
+      <path d="M 75 390 L 75 140 L 154 108" fill="none" stroke="var(--coral-fill)" stroke-width="1.5" stroke-opacity="0.42" stroke-dasharray="5,3" marker-end="url(#arw)"/>
+
+      <!-- ── 7. Ratepayers → Governor  x=253 gap (DTE right=245, Consumers left=262), diagonal into Governor bottom center ── -->
+      <path d="M 253 390 L 253 140 L 340 108" fill="none" stroke="var(--coral-fill)" stroke-width="1.5" stroke-opacity="0.42" stroke-dasharray="5,3" marker-end="url(#arw)"/>
+
+      <!-- ── 8. Ratepayers → Senate  x=496 gap (right of MPSC=492, clear of Munis top), diagonal into Senate bottom center ── -->
+      <!-- 2 elbows: Ratepayers right (399,420) → x=496 → up to y=140 → diagonal to Senate cx (521,108) -->
+      <path d="M 399 420 L 496 420 L 496 140 L 521 108" fill="none" stroke="var(--coral-fill)" stroke-width="1.5" stroke-opacity="0.42" stroke-dasharray="5,3" marker-end="url(#arw)"/>
+
+      <!-- ── 9. Local Gov → Munis  x=510, straight vertical ── -->
+      <path d="M 510 390 L 510 332" fill="none" stroke="var(--amber-fill)" stroke-width="1.5" stroke-opacity="0.55" marker-end="url(#arw)"/>
+
+      <!-- ── 10. Ratepayers → Munis  2 elbows: right of Ratepayers (399,408) → x=580 → Munis bottom (580,332) ── -->
+      <path d="M 399 408 L 580 408 L 580 332" fill="none" stroke="var(--gray-fill)" stroke-width="1.2" stroke-opacity="0.40" stroke-dasharray="5,3" marker-end="url(#arw)"/>
+
+      <!-- ROW 1: House | Governor | Senate -->
+      <!-- House: x=63 w=182 right=245 -->
       <g class="node-ring node-coral" onclick="showCard('house')" tabindex="0" role="button" aria-label="MI House Energy Committee">
-        <rect x="80" y="50" width="220" height="58" rx="8" stroke-width="0.5"/>
-        <text class="node-th" x="190" y="72" text-anchor="middle" dominant-baseline="central">MI House Energy Committee</text>
-        <text class="node-ts" x="190" y="92" text-anchor="middle" dominant-baseline="central">Writes energy legislation</text>
+        <rect x="63" y="50" width="182" height="58" rx="8"/>
+        <text class="node-th" x="154" y="71" text-anchor="middle" dominant-baseline="central">MI House Energy</text>
+        <text class="node-th" x="154" y="88" text-anchor="middle" dominant-baseline="central">Committee</text>
       </g>
+      <!-- Governor: x=278 w=124 right=402 -->
+      <g class="node-ring node-amber" onclick="showCard('governor')" tabindex="0" role="button" aria-label="Governor's Office">
+        <rect x="278" y="50" width="124" height="58" rx="8"/>
+        <text class="node-th" x="340" y="71" text-anchor="middle" dominant-baseline="central">Governor's</text>
+        <text class="node-th" x="340" y="88" text-anchor="middle" dominant-baseline="central">Office</text>
+      </g>
+      <!-- Senate: x=416 w=210 right=626 -->
       <g class="node-ring node-coral" onclick="showCard('senate')" tabindex="0" role="button" aria-label="MI Senate Energy and Environment Committee">
-        <rect x="360" y="50" width="240" height="58" rx="8" stroke-width="0.5"/>
-        <text class="node-th" x="480" y="72" text-anchor="middle" dominant-baseline="central">MI Senate Energy &amp; Environment</text>
-        <text class="node-ts" x="480" y="92" text-anchor="middle" dominant-baseline="central">Approves energy bills</text>
+        <rect x="416" y="50" width="210" height="58" rx="8"/>
+        <text class="node-th" x="521" y="71" text-anchor="middle" dominant-baseline="central">MI Senate Energy</text>
+        <text class="node-th" x="521" y="88" text-anchor="middle" dominant-baseline="central">&amp; Environment</text>
       </g>
 
       <!-- ROW 2: MPSC -->
       <g class="node-ring node-teal" onclick="showCard('mpsc')" tabindex="0" role="button" aria-label="Michigan Public Service Commission">
-        <rect x="180" y="162" width="300" height="62" rx="8" stroke-width="0.5"/>
+        <rect x="168" y="162" width="324" height="62" rx="8"/>
         <text class="node-th" x="330" y="184" text-anchor="middle" dominant-baseline="central">Michigan Public Service Commission</text>
-        <text class="node-ts" x="330" y="204" text-anchor="middle" dominant-baseline="central">Regulates DTE &amp; Consumers Energy</text>
+        <text class="node-ts" x="330" y="203" text-anchor="middle" dominant-baseline="central">Regulates investor-owned utilities</text>
       </g>
 
-      <!-- ROW 3: Utilities -->
+      <!-- ROW 3: DTE | Consumers | Municipal -->
+      <!-- DTE: x=63 w=182 right=245 -->
       <g class="node-ring node-blue" onclick="showCard('dte')" tabindex="0" role="button" aria-label="DTE Energy">
-        <rect x="130" y="270" width="240" height="62" rx="8" stroke-width="0.5"/>
-        <text class="node-th" x="250" y="292" text-anchor="middle" dominant-baseline="central">DTE Energy</text>
-        <text class="node-ts" x="250" y="312" text-anchor="middle" dominant-baseline="central">Serves SE Michigan (2.2M customers)</text>
+        <rect x="63" y="270" width="182" height="62" rx="8"/>
+        <text class="node-th" x="154" y="291" text-anchor="middle" dominant-baseline="central">DTE Energy</text>
+        <text class="node-ts" x="154" y="309" text-anchor="middle" dominant-baseline="central">SE Michigan, 2.2M customers</text>
       </g>
+      <!-- Consumers: x=262 w=186 right=448 -->
       <g class="node-ring node-blue" onclick="showCard('consumers')" tabindex="0" role="button" aria-label="Consumers Energy">
-        <rect x="390" y="270" width="240" height="62" rx="8" stroke-width="0.5"/>
-        <text class="node-th" x="510" y="292" text-anchor="middle" dominant-baseline="central">Consumers Energy</text>
-        <text class="node-ts" x="510" y="312" text-anchor="middle" dominant-baseline="central">Serves West &amp; Central MI</text>
+        <rect x="262" y="270" width="186" height="62" rx="8"/>
+        <text class="node-th" x="355" y="291" text-anchor="middle" dominant-baseline="central">Consumers Energy</text>
+        <text class="node-ts" x="355" y="309" text-anchor="middle" dominant-baseline="central">West &amp; Central MI</text>
+      </g>
+      <!-- Municipal: x=464 w=170 right=634 -->
+      <g class="node-ring node-blue" onclick="showCard('munis')" tabindex="0" role="button" aria-label="Municipal utilities">
+        <rect x="464" y="270" width="170" height="62" rx="8"/>
+        <text class="node-th" x="549" y="288" text-anchor="middle" dominant-baseline="central">Municipal utilities</text>
+        <text class="node-ts" x="549" y="306" text-anchor="middle" dominant-baseline="central">~40 city-owned utilities</text>
+        <text class="node-ts" x="549" y="322" text-anchor="middle" dominant-baseline="central">Lansing, Holland, Traverse City</text>
       </g>
 
-      <!-- ROW 4: Local + Residents -->
-      <g class="node-ring node-amber" onclick="showCard('local')" tabindex="0" role="button" aria-label="Local governments">
-        <rect x="430" y="390" width="200" height="58" rx="8" stroke-width="0.5"/>
-        <text class="node-th" x="530" y="412" text-anchor="middle" dominant-baseline="central">Local governments</text>
-        <text class="node-ts" x="530" y="430" text-anchor="middle" dominant-baseline="central">Cities, townships, counties</text>
-      </g>
+      <!-- ROW 4: Residents | Local gov -->
+      <!-- Residents: x=63 w=336 right=399 -->
       <g class="node-ring node-gray" onclick="showCard('you')" tabindex="0" role="button" aria-label="Residents and ratepayers">
-        <rect x="80" y="390" width="330" height="58" rx="8" stroke-width="1"/>
-        <text class="node-th" x="245" y="412" text-anchor="middle" dominant-baseline="central">Residents &amp; ratepayers</text>
-        <text class="node-ts" x="245" y="430" text-anchor="middle" dominant-baseline="central">Voters, bill-payers, community members</text>
+        <rect x="63" y="390" width="336" height="58" rx="8"/>
+        <text class="node-th" x="231" y="411" text-anchor="middle" dominant-baseline="central">Ratepayers</text>
+        <text class="node-ts" x="231" y="429" text-anchor="middle" dominant-baseline="central">Voters, bill-payers, community members</text>
+      </g>
+      <!-- Local gov: x=416 w=218 right=634 -->
+      <g class="node-ring node-amber" onclick="showCard('local')" tabindex="0" role="button" aria-label="Local governments">
+        <rect x="416" y="390" width="218" height="58" rx="8"/>
+        <text class="node-th" x="525" y="411" text-anchor="middle" dominant-baseline="central">Local Government</text>
+        <text class="node-ts" x="525" y="429" text-anchor="middle" dominant-baseline="central">Cities, townships, counties</text>
       </g>
 
       <!-- Legend -->
-      <line x1="80" y1="472" x2="106" y2="472" stroke="var(--text3)" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arw)"/>
-      <text class="legend-text" x="112" y="476">Regulated / accountable to</text>
-      <line x1="290" y1="472" x2="316" y2="472" stroke="var(--text3)" stroke-width="1.5" stroke-opacity="0.5" stroke-dasharray="5,3" marker-end="url(#arw)"/>
-      <text class="legend-text" x="322" y="476">Voter influence pathway</text>
-      <text class="legend-text" x="520" y="476" text-anchor="middle">Click any box to learn more</text>
+      <line x1="63" y1="490" x2="87" y2="490" stroke="var(--text3)" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arw)"/>
+      <text class="legend-text" x="92" y="494">Accountable to</text>
+      <line x1="200" y1="490" x2="224" y2="490" stroke="var(--text3)" stroke-width="1.5" stroke-opacity="0.5" stroke-dasharray="5,3" marker-end="url(#arw)"/>
+      <text class="legend-text" x="229" y="494">You elect / influence</text>
+      <text class="legend-text" x="530" y="494" text-anchor="middle">Click any box to learn more</text>
     </svg>
   </div>
 
@@ -243,6 +278,12 @@ const cards = {
     voter: '<strong>How you connect:</strong> You elect your State Senator every 4 years. Constituent calls and emails are tracked — offices tally them. Organized groups of constituents requesting a meeting are rarely turned down.',
     link: 'https://www.senate.michigan.gov/information/committees/all-committees/2025-2026/energy-and-environment/', linkText: 'Senate Energy & Environment Committee →'
   },
+  governor: {
+    title: "Governor's Office",
+    cat: 'State government', catStyle: 'color:var(--amber-text);background:var(--amber-bg)',
+    body: "The Governor appoints all three MPSC commissioners and signs or vetoes energy legislation passed by the Legislature. Governor Whitmer set Michigan's 100% clean energy by 2040 goal through executive action — meaning a future governor could revise it. The Governor also controls state agency priorities and can direct resources toward or away from clean energy programs.",
+    voter: "<strong>How you connect:</strong> You elect the Governor every 4 years. This is one of the highest-leverage votes for clean energy in Michigan — the Governor's MPSC appointments shape utility regulation for years beyond any single term."
+  },
   mpsc: {
     title: 'Michigan Public Service Commission (MPSC)',
     cat: 'State regulator', catStyle: 'color:var(--teal-text);background:var(--teal-bg)',
@@ -262,14 +303,20 @@ const cards = {
     body: "The second-largest electric utility in Michigan, serving 1.8 million customers across 68 counties in West and Central Michigan. Like DTE, Consumers is a regulated monopoly. Consumers has pledged 90% clean energy by 2040.",
     voter: "<strong>How you connect:</strong> If you're a Consumers customer, you can participate in MPSC hearings on their rate cases and integrated resource plans. You can also contact your legislators, who represent districts where Consumers operates."
   },
+  munis: {
+    title: 'Municipal utilities',
+    cat: 'Publicly owned utility', catStyle: 'color:var(--blue-text);background:var(--blue-bg)',
+    body: 'About 40 Michigan cities — including Lansing, Holland, and Traverse City — run their own electric utilities rather than relying on DTE or Consumers. These are publicly owned, governed by local elected officials or appointed boards, and are not regulated by the MPSC. They set their own rates and energy plans. Several have moved faster on renewables than the investor-owned utilities.',
+    voter: '<strong>How you connect:</strong> If you live in a municipally-served city, your city council or utility board directly controls your energy future. You can vote for board members, attend public meetings, and comment on utility plans — with far more direct access than DTE or Consumers customers have.'
+  },
   local: {
-    title: 'Local governments',
+    title: 'Local Government',
     cat: 'Municipal & county', catStyle: 'color:var(--amber-text);background:var(--amber-bg)',
     body: 'Cities, townships, and counties can influence energy decisions by adopting local clean energy resolutions, streamlining solar permitting, joining municipal aggregation programs, and filing formal comments in MPSC proceedings. Detroit, Ann Arbor, and Lansing have all adopted clean energy commitments.',
     voter: '<strong>How you connect:</strong> Local elected officials — city council members, township trustees, county commissioners — are often the most accessible elected officials. Showing up to a single meeting, or organizing a few neighbors to attend, can directly move a local clean energy resolution.'
   },
   you: {
-    title: 'Residents & ratepayers',
+    title: 'Ratepayers',
     cat: "That's you", catStyle: 'color:var(--gray-text);background:var(--gray-bg)',
     body: 'As a Michigan resident, you are both a ratepayer (you pay utility bills that fund these companies) and a voter (you elect the legislators who set energy law, and whose governors appoint MPSC commissioners). You have more leverage than most people realize — the pathways on this map are all real and open to you.',
     voter: '<strong>Your highest-impact actions:</strong> (1) Participate in MPSC public comment on DTE or Consumers rate cases. (2) Contact your state House and Senate representatives on energy bills. (3) Vote in state elections — MPSC commissioners are appointed by the governor you elect. (4) Attend local government meetings on clean energy resolutions.',
